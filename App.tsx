@@ -40,7 +40,7 @@ const Login=()=>{
                         <Icon name="arrow-right" size={15} color="black" style={{color:'#c97caabf',alignSelf:'center',margin:10}}></Icon> 
                      </TouchableOpacity>
                   </LinearGradient>
-                  <View style={{flexDirection:'row',width:'100%',marginTop:20}}>
+                  <View style={{flexDirection:'row',width:'100%',marginTop:30,flex:1}}>
                   <Text style={{fontWeight:'bold',fontSize:14}}>Don't have an account?</Text>
                   <Text style={{paddingLeft:5, color:'#8A46FF',textDecorationLine: 'underline'}}>Create</Text>
                   </View> 
@@ -49,10 +49,10 @@ const Login=()=>{
                   </View>
                  </View>
                  
-                 <View style={{marginRight:90, flexDirection:'row'}}>
+                 <View style={{marginRight:80, flexDirection:'row',flex:1}}>
                   <Image source={require('./assets/images/image3.png')}  ></Image>
                  
-                 <View style={{flexDirection:'row',marginTop:130}}>
+                 <View style={{flexDirection:'row',marginTop:80,flex:1}}>
                  <Icon name="facebook" size={32} color="#4267B2" style={styles.smallIcon}></Icon>
                  
                  <Image source={require('./assets/images/search.png')}  style={styles.search}></Image> 
@@ -129,7 +129,7 @@ grediant: {
     width: "100%",
     justifyContent: 'center',
     alignSelf: 'center',
-    marginTop:40,
+    marginTop:30,
     padding:1,
     borderRadius:50
 },
@@ -175,4 +175,3 @@ scrollView: {
 }, 
 })
 export default Login;
-
