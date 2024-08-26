@@ -45,11 +45,10 @@ const Login=()=>{
                   <Text style={{fontWeight:'bold',fontSize:14}}>Don't have an account?</Text>
                   <Text style={{paddingLeft:5, color:'#8A46FF',textDecorationLine: 'underline'}}>Create</Text>
                   </View> 
-                  <View style={{alignItems:'center'}}>
+                  <View style={{alignItems:'center',flex:1}}>
                   <Text>Continue With</Text>
                   </View>
-                
-                 </View>
+                  </View>
                   <View style={{flex:1,position:'relative',marginRight:395,marginTop:153}}>
                   <View style={{position:'absolute',left:0,bottom:0,flexDirection:'row'}} >
                   <Image source={require('./assets/images/image3.png')}  ></Image>
@@ -84,6 +83,7 @@ const styles = StyleSheet.create({
     resizeMode:'contain'
 },
 action: {
+  flex:1,
     flexDirection: 'row',
     alignItems:'center',
     marginTop: 17,
@@ -103,10 +103,6 @@ action: {
       width: 0,
     },
     elevation: 5,
-},
-smallIcon: {
-    marginRight:10,
-    padding:6,
 },
 textInput: {
     flex: 1,
