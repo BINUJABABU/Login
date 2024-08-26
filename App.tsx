@@ -50,7 +50,7 @@ const Login=()=>{
                   </View>
                 
                  </View>
-                  <View style={{flex:1,position:'relative',marginRight:395,marginTop:152}}>
+                  <View style={{flex:1,position:'relative',marginRight:395,marginTop:153}}>
                   <View style={{position:'absolute',left:0,bottom:0,flexDirection:'row'}} >
                   <Image source={require('./assets/images/image3.png')}  ></Image>
                   <View style={{flex:1,marginTop:100,marginLeft:50}}>
