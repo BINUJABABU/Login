@@ -93,7 +93,7 @@ action: {
     borderColor:'white',
     borderRadius: 50,
     backgroundColor:'white',
-    width:'90%',
+    width:'85%',
     height:63,
     shadowColor: 'black',
     shadowOpacity: 10,
