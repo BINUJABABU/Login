@@ -88,15 +88,16 @@ const Modall = () => {
     input:{
         fontSize:wp('6%'),
         fontWeight:'bold',
+        color:'black'
     },
     input1:{
         fontSize:wp('5%'),
-        paddingTop:5
+        paddingTop:7
     },
     input2:{
         fontSize:wp('5%'),
         color:'#8A46FF',
-        paddingTop:5,
+        paddingTop:7,
         fontWeight:'bold'
     },
     button:{
