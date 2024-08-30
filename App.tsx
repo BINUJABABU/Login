@@ -7,6 +7,8 @@ import MyIcon1 from './assets/images/MyIcon1'
 
 
 
+
+
 const Login=()=>{
    return(
     <SafeAreaView style={styles.safe}>
@@ -34,7 +36,7 @@ const Login=()=>{
                   colors={['#FFE500','#FF9452', '#FF6F7E', '#F63FB8', '#C037EB', '#8A46FF']}
                      start={{ x: 0.1, y: 1.0 }} end={{ x: 1.0, y: 0.0 }}
                      style={styles.grediant}>
-                     <TouchableOpacity style={styles.buttonContainer}>
+                     <TouchableOpacity style={styles.buttonContainer} >
                       <Text style={styles.buttonText}>
                           Sign In
                       </Text>
@@ -159,3 +161,4 @@ scrollView: {
 }, 
 })
 export default Login;
+

@@ -11,11 +11,15 @@
     "postinstall": "npx typesync"
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^4.6.4",
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-asset": "^2.1.1",
+    "react-native-gesture-handler": "^2.18.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-linear-gradient": "^2.8.3",
+    "react-native-reanimated": "^3.15.0",
+    "react-native-responsive-screen": "^1.4.2",
     "react-native-svg": "^15.6.0",
     "react-native-vector-icons": "^10.1.0"
   },
