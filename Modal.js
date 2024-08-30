@@ -5,19 +5,19 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const Modall = () => {
     const [modalVisible, setModalVisible] = useState(false);
-  
-    const openModal = () => setModalVisible(true);
-    const closeModal = () => setModalVisible(false);
+    const toggleModal =()=>{
+         setModalVisible ((prev)=>!prev)
+    }
   
     return (
       <View style={styles.container}>
-        <Button title="Open Modal" onPress={openModal} />
+        <Button title="Open Modal" onPress={toggleModal} />
   
         <Modal
           transparent={true}
           animationType="slide"
           visible={modalVisible}
-          onRequestClose={closeModal}
+          onRequestClose={toggleModal}
         >
           <View style={styles.modalBackground}>
             <View style={styles.modalContainer}>
@@ -33,7 +33,7 @@ const Modall = () => {
             <LinearGradient
             colors={['#8A46FF','#B554F2']}
             start={{ x: 0.1, y: 1.1}} end={{ x: 1.1, y: 1.1 }} style={{borderRadius:10}}>
-             <TouchableOpacity style={styles.opacity} onPress={closeModal}>
+             <TouchableOpacity style={styles.opacity} onPress={toggleModal}>
              <Text style={styles.subscribe}>Subscribe now</Text>
              </TouchableOpacity>
              </LinearGradient>
