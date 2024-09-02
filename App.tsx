@@ -12,8 +12,7 @@ import MyIcon1 from './assets/images/MyIcon1'
 const Login=()=>{
    return(
     <SafeAreaView style={styles.safe}>
-     
-      <StatusBar translucent backgroundColor="transparent" />
+     <StatusBar translucent backgroundColor="transparent" />
       <ScrollView automaticallyAdjustKeyboardInsets={true} style={styles.scrollView}>
       <View style={styles.logoContainer}>
          <Image source={require('./assets/images/Vector.png')} style={styles.image1}></Image>
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
     resizeMode:'contain'
 },
 action: {
-  flex:1,
+    flex:1,
     flexDirection: 'row',
     alignItems:'center',
     marginTop: 17,
