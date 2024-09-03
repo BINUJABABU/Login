@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, View, Text, Button, StyleSheet,Image, TouchableOpacity, ImageBackground } from 'react-native';
+import { Modal, View, Text, Button, StyleSheet,Image, TouchableOpacity} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -12,7 +12,6 @@ const Cngrtsmodal = () => {
     return (
       <View style={styles.container}>
         <Button title="Open Modal" onPress={toggleModal} />
-  
         <Modal
           transparent={true}
           animationType="slide"
@@ -21,18 +20,13 @@ const Cngrtsmodal = () => {
         >
           <View style={styles.modalBackground}>
             <View style={styles.modalContainer}>
+              <LinearGradient colors={['#8A46FF','#B554F2']} style={styles.gradientBorder} >
             <View style={styles.top}>
-            
-            
-             <Image source={require('./assets/images/profile.png')} style={styles.imagebackground}></Image>
-            
-           
+            <Image source={require('./assets/images/profile.png')} style={styles.imagebackground}></Image>
             </View>
             <View style={styles.text}>
-             
              <Text style={styles.input1}>Congratulations!! You are now a Prestiage </Text>
              <Text style={styles.input1}>member. Enjoy your Benefits.</Text>
-            
             </View>
             <View style={styles.button}>
             <LinearGradient
@@ -43,6 +37,7 @@ const Cngrtsmodal = () => {
              </TouchableOpacity>
              </LinearGradient>
             </View>
+            </LinearGradient>
           </View>
           </View>
         </Modal>
@@ -52,6 +47,7 @@ const Cngrtsmodal = () => {
   
   const styles = StyleSheet.create({
     container: {
+      
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
@@ -68,16 +64,15 @@ const Cngrtsmodal = () => {
       backgroundColor: 'white',
       borderRadius: 25,
       alignItems: 'center',
-      borderColor:'#8A46FF',
-      borderWidth:4
     },
     top:{
         height: hp('24%'),
         width: wp('95%'),
         alignItems:'center',
         justifyContent:'center',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        backgroundColor:'white'
       },
     imagebackground:{
         resizeMode:'contain',
@@ -85,40 +80,39 @@ const Cngrtsmodal = () => {
         width:130
     },
     image:{
-      // resizeMode:'contain',
-      height:140,
-      width:160,
+        height:140,
+        width:160,
     },
     text:{
         height: hp('10%'),
         width: wp('95%'),
         paddingLeft:20,
-        alignItems:'center'
-        // backgroundColor:'yellow'
+        alignItems:'center',
+        backgroundColor:'white'
     },
     input1:{
         fontSize:wp('4%'),
         color:'#403D39',
         fontWeight:'bold'
-        
     },
     button:{
         height: hp('11%'),
         width: wp('95%'),
         alignItems:'center',
-        // marginTop:3,
-        // backgroundColor:'red'
+        backgroundColor:'white',
+        borderBottomLeftRadius:25,
+        borderBottomRightRadius:25
     },
     opacity:{
         height: hp('7%'),
         width: wp('85%'),
         alignItems: 'center',
         padding: 10,
-        shadowColor: '#000000',
+        shadowColor: '#FFFFFF',
         shadowOpacity: 20,
         shadowRadius: 10,
         shadowOffset: {
-          height: 5,
+          height: 1,
           width: 1,
         },
         elevation: 5,
@@ -127,6 +121,12 @@ const Cngrtsmodal = () => {
         color:'white',
         fontSize:26,
         fontWeight:'bold',
+    },
+    gradientBorder:{
+      borderRadius:25,
+      padding:4,
+      alignItems: 'center',
+      
     }
   });
   
