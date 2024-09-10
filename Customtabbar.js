@@ -55,8 +55,8 @@ const getIconSource = (routeName) => {
       return require('./assets/live.png');
     case 'Chat':
       return require('./assets/chat.png');
-      case 'Profile':
-        return require('./assets/profile.png');
+    case 'Profile':
+      return require('./assets/profile.png');
     default:
       return require('./assets/add.png');
   }
@@ -66,10 +66,10 @@ const getIconStyle = (routeName) => {
   switch (routeName) {
     case 'Home':
       return styles.iconHome;
-      case 'Live':
+    case 'Live':
       return styles.iconLive;
-      case 'Chat':
-        return styles.iconChat;
+    case 'Chat':
+      return styles.iconChat;
     case 'Profile':
       return styles.iconProfile;
    default:
@@ -91,10 +91,7 @@ return (
           key={route.key}
           onPress={() => navigation.navigate(route.name)}
           style={styles.tab}
-          accessibilityRole="button"
-          accessibilityStates={isFocused ? ['selected'] : []}
-          accessibilityLabel={options.tabBarAccessibilityLabel}
-          testID={options.tabBarTestID} >
+          accessibilityRole="button" >
           <Image source={iconSource} style={iconStyle} />
           <Text style={labelStyle}>{route.name}</Text>
         </TouchableOpacity>
@@ -153,7 +150,6 @@ const styles = StyleSheet.create({
   iconProfile: { width: 23, height:26 },
   iconAdd: { width:60, height: 60 },
 });
-
 export default BottomTabNavigator;
 
 
