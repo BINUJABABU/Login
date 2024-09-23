@@ -11,7 +11,11 @@ const Cngrtsmodal = () => {
   
     return (
       <View style={styles.container}>
+<<<<<<< HEAD
         <Button title="Open Modal" onPress={toggleModal} />
+=======
+        <Button title="Open Modal" onPress={toggleModal} testID='modalButton' />
+>>>>>>> 08f8319 (commit)
         <Modal
           transparent={true}
           animationType="slide"
