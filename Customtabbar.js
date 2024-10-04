@@ -1,12 +1,14 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Image, Text, TouchableOpacity ,StyleSheet} from 'react-native';
+import AudioPlayer from './src/components/Audio';
 
 
 function Home() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home</Text>
+      {/* <Text>Home</Text> */}
+      <AudioPlayer></AudioPlayer>
     </View>
   );
 }
@@ -108,6 +110,7 @@ const BottomTabNavigator = () => {
   return (
     <Tab.Navigator 
      tabBar={(props) => <CustomTabBar {...props} />}>
+      
      <Tab.Screen
         name="Home"
         component={Home}

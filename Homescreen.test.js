@@ -22,7 +22,7 @@ describe('HomeScreen', () => {
   it('renders the correct number of items in FlatList', () => {
     const { getAllByText } = renderWithNavigation();
 
-  // Check if 7 items are rendered  
+  // Check if 7 items are rendered  /DATA/ used to find all elements of the data
     const items = getAllByText(/DATA/i);
     expect(items.length).toBe(7); 
   });
