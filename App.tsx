@@ -13,11 +13,12 @@ import LoginPage from './utils/Login';
 
 const Stack = createStackNavigator();
 
+
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
+    <NavigationContainer  >
+      <Stack.Navigator  initialRouteName="Home "  screenOptions={{headerShown: false}}>
+        <Stack.Screen name='Home' options={{headerShown:false}} component={HomeScreen}  />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Congratsmodal" component={Cngrtsmodal} />
         <Stack.Screen name="Bottom Sheet" component={Work} />

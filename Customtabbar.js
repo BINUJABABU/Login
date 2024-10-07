@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Image, Text, TouchableOpacity ,StyleSheet} from 'react-native';
 import AudioPlayer from './src/components/Audio';
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 
 
 function Home() {
@@ -114,6 +115,7 @@ const BottomTabNavigator = () => {
      <Tab.Screen
         name="Home"
         component={Home}
+        options={{headerShown:false}}
       />
      <Tab.Screen
         name="Live"
@@ -138,7 +140,8 @@ const BottomTabNavigator = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    height: 98,
+    // height: 98,
+    height:heightPercentageToDP('13%'),
     backgroundColor: 'white',
     justifyContent: 'space-around',
     alignItems: 'center',

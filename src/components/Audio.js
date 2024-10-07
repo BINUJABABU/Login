@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, StyleSheet, View, Image, TextInput, ImageBackground } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, StyleSheet, View, Image, TextInput,StatusBar,FlatList} from 'react-native';
 import Video from 'react-native-video';
 import coverImage1 from '../components/image2.png'; 
 import coverImage2 from '../components/image2.png';
@@ -9,13 +9,15 @@ import { BlurView } from '@react-native-community/blur';
 // import {GlassView} from '@metafic-co/react-native-glassmorphism'
 import SVGImage from '../../assets/svgimages/Chat';
 import { PATH } from '../../assets/svgimages/Chat';
-import LinearGradient from 'react-native-linear-gradient';
+// import LinearGradient from 'react-native-linear-gradient';
+import { Dimensions } from 'react-native';
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 
 
 
 //Array of audio files objects
 
-const mediaFiles = [
+ const mediaFiles = [
   { id: '1', url: 'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3', coverImage: coverImage1 ,type: 'audio'},
   { id: '2', url: 'https://cdn.api.video/vod/vi1FBKkaYe5Y2L9wNbGDYztl/mp4/720/source.mp4?dl=1 ', coverImage: coverImage2, type: 'video' },
   { id: '3', url: 'http://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3', coverImage: coverImage3,type: 'audio' },
@@ -118,7 +120,6 @@ const mediaFiles = [
   { id: '100', url: 'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3', coverImage: coverImage2,type: 'audio' },
 ];
 
-
 const AudioPlayer = () => {
   const playerRef = useRef(null);                                                   // A reference for the video player, allowing control over playback.
   const [currentAudio, setCurrentAudio] = useState(null);                           // currentAudio - State to track the currently playing audio URL.
@@ -135,25 +136,39 @@ const AudioPlayer = () => {
       }));
     }
   };
+
+ const {width, height} = Dimensions.get('window')
+
+ const screenHeight = Dimensions.get('window').height;
+
+ const RenderHeader = () => (
+       <View style={{flexDirection:'row',flex:1}}>
+            <Text style={{color:'white',fontWeight:600,fontSize:18,textDecorationLine:'underline'}}>For You</Text>
+            <Text style={{color:'#828282',paddingLeft:10,fontWeight:600,fontSize:16}}>Live</Text>
+        </View> 
+  );
+
   
   const renderMediaPage = (item) => {
     const isCurrentPlaying = isPlaying[item.url] || false; 
     return (
       <View key={item.id} style={styles.page}>
+         <StatusBar translucent backgroundColor="transparent" /> 
         <View style={styles.coverContainer}>
           <Image source={item.coverImage} style={styles.coverImage} />
           <BlurView style={styles.absolute} blurType='light' blurAmount={500} reducedTransparencyFallbackColor="White" />
-          <View style={{flexDirection:'row',}}>
-            <Text style={{color:'white',bottom:470,fontWeight:600,fontSize:18}}>Followers</Text>
-            <Text style={{color:'#828282',bottom:470,paddingLeft:10,fontWeight:600,fontSize:16}}>Following</Text>
-        </View>
-        <View style={styles.main}> 
+           {/* <View style={{flexDirection:'row',}}>
+            <Text style={{color:'white',bottom:530,fontWeight:600,fontSize:18}}>Followers</Text>
+            <Text style={{color:'#828282',bottom:530,paddingLeft:10,fontWeight:600,fontSize:16}}>Following</Text>
+        </View>  */}
+        
+<View style={styles.main}> 
            <View style={styles.textview}>
            <View style={{flexDirection:'row',bottom:5}}>
             <Image style={{resizeMode:'contain',height:30,width:30}} source={require('../components/profile.png')}></Image>
           <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
             {/* {item.type === 'audio' ? 'Audio' : 'Video'} */}
-            {item.type === 'audio' ? 'Amma_Wasson' : 'Video'}
+            {item.type === 'audio' ? 'Amma_Wasson' : 'Amma_Wasson'}
           </Text>
        
           <TouchableOpacity style={styles.button} onPress={() => toggleMedia(item.url, item.type)}>
@@ -199,7 +214,7 @@ const AudioPlayer = () => {
            </View>
         </View>
         </View> 
-        {currentAudio === item.url && (
+        {currentAudio === {item}.url && (
           <Video
             ref={playerRef}
             source={{ uri: currentAudio }}
@@ -217,12 +232,21 @@ const AudioPlayer = () => {
   
  return (
     <View style={styles.container}>
+      <View style={{position:'absolute',zIndex:100,top:30}}><RenderHeader /></View>
+      {/* <FlatList
+      // data={mediaFiles}
+      renderItem={renderMediaPage}
+      keyExtractor={item => item.id}
+      // ListHeaderComponent={renderHeader}
+      stickyHeaderIndices={[0]}
+     /> */}
       <ScrollView
           pagingEnabled
           horizontal={false}
-          contentContainerStyle={styles.scrollView}>                                                                    
-          {mediaFiles.map(renderMediaPage)}
+          contentContainerStyle={styles.scrollView}> 
+            {mediaFiles.map(renderMediaPage)} 
       </ScrollView>
+      
     </View>
   );
 };
@@ -232,6 +256,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    
   },
   background: {
     flex: 1,
@@ -251,11 +276,15 @@ const styles = StyleSheet.create({
     height: '100%',
     },
   coverContainer: {
-    width: 400, 
-    height: 541,
+    // width: 400, 
+    width:widthPercentageToDP('100%'),
+    //  height: 597,
+    //  screenHeight:'75%',
+    height:heightPercentageToDP('87%'),
     overflow: 'hidden',
     alignItems:'center',
     justifyContent:'center',
+  
     },
   coverImage: {
     width: '100%',
@@ -312,7 +341,7 @@ const styles = StyleSheet.create({
     left:15,
   },
   textview:{
-    marginBottom:100
+     marginBottom:0
   },
   input1:{
     width:75,
@@ -354,7 +383,7 @@ const styles = StyleSheet.create({
     alignItems:'flex-end',
     marginTop:300,
     paddingRight:1,
-    marginBottom:95,
+    marginBottom:0,
     left:30,
     gap:5
   },
