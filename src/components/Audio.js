@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, StyleSheet, View, Image, TextInput,StatusBar,FlatList} from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View, Image, TextInput,StatusBar,FlatList} from 'react-native';
 import Video from 'react-native-video';
 import coverImage1 from '../components/image2.png'; 
 import coverImage2 from '../components/image2.png';
@@ -125,7 +125,7 @@ const AudioPlayer = () => {
   const [currentAudio, setCurrentAudio] = useState(null);                           // currentAudio - State to track the currently playing audio URL.
   const [isPlaying, setIsPlaying] = useState({});                                  // isPlaying - State to track the playing status of each audio file using an object.
 
-  const toggleMedia = (url, type) => {
+  const toggleMedia = (url,type) => {
     if (currentAudio !== url) {
       setCurrentAudio(url);
       setIsPlaying({ [url]: true }); 
@@ -137,9 +137,9 @@ const AudioPlayer = () => {
     }
   };
 
- const {width, height} = Dimensions.get('window')
+//  const {width, height} = Dimensions.get('window')
 
- const screenHeight = Dimensions.get('window').height;
+//  const screenHeight = Dimensions.get('window').height;
 
  const RenderHeader = () => (
        <View style={{flexDirection:'row',flex:1}}>
@@ -149,7 +149,8 @@ const AudioPlayer = () => {
   );
 
   
-  const renderMediaPage = (item) => {
+  const renderMediaPage = ({item}) => {
+    console.log(item);
     const isCurrentPlaying = isPlaying[item.url] || false; 
     return (
       <View key={item.id} style={styles.page}>
@@ -157,18 +158,13 @@ const AudioPlayer = () => {
         <View style={styles.coverContainer}>
           <Image source={item.coverImage} style={styles.coverImage} />
           <BlurView style={styles.absolute} blurType='light' blurAmount={500} reducedTransparencyFallbackColor="White" />
-           {/* <View style={{flexDirection:'row',}}>
-            <Text style={{color:'white',bottom:530,fontWeight:600,fontSize:18}}>Followers</Text>
-            <Text style={{color:'#828282',bottom:530,paddingLeft:10,fontWeight:600,fontSize:16}}>Following</Text>
-        </View>  */}
-        
-<View style={styles.main}> 
+           <View style={styles.main}> 
            <View style={styles.textview}>
            <View style={{flexDirection:'row',bottom:5}}>
             <Image style={{resizeMode:'contain',height:30,width:30}} source={require('../components/profile.png')}></Image>
           <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
-            {/* {item.type === 'audio' ? 'Audio' : 'Video'} */}
-            {item.type === 'audio' ? 'Amma_Wasson' : 'Amma_Wasson'}
+             {item.type === 'audio' ? 'Audio' : 'Video'} 
+            {/* {item.type === 'audio' ? 'Amma_Wasson' : 'Amma_Wasson'} */}
           </Text>
        
           <TouchableOpacity style={styles.button} onPress={() => toggleMedia(item.url, item.type)}>
@@ -192,8 +188,8 @@ const AudioPlayer = () => {
             </View>
             <View style={styles.iconview}>
               <View>
-                 {/* <SVGImage fill={'red'} svgContent={PATH.like_icon}/> */}
-                 <SVGImage svgContent={PATH.like_icon}/>
+                 <SVGImage fill={'red'} svgContent={PATH.like_icon}/>
+                 {/* <SVGImage svgContent={PATH.like_icon}/> */}
                  <Text style={styles.icon}>4.1k</Text>
               </View>
               <View>
@@ -217,11 +213,12 @@ const AudioPlayer = () => {
         {currentAudio === {item}.url && (
           <Video
             ref={playerRef}
-            source={{ uri: currentAudio }}
+            // source={{ uri: currentAudio }}
+            source={{ url: currentAudio }}
             audioOnly={item.type === 'audio'}
             paused={!isCurrentPlaying}
             onEnd={() => setIsPlaying({ ...isPlaying, [currentAudio]: false })} 
-            // style={styles.videoPlayer} // Define this style
+            //  style={styles.videoPlayer} // Define this style
             style={item.type === 'video' ? styles.videoPlayer : styles.audioPlayer} // Use conditional styling
           />
         )}
@@ -233,21 +230,15 @@ const AudioPlayer = () => {
  return (
     <View style={styles.container}>
       <View style={{position:'absolute',zIndex:100,top:30}}><RenderHeader /></View>
-      {/* <FlatList
-      // data={mediaFiles}
+      <FlatList
+      data={mediaFiles} 
       renderItem={renderMediaPage}
       keyExtractor={item => item.id}
-      // ListHeaderComponent={renderHeader}
-      stickyHeaderIndices={[0]}
-     /> */}
-      <ScrollView
-          pagingEnabled
-          horizontal={false}
-          contentContainerStyle={styles.scrollView}> 
-            {mediaFiles.map(renderMediaPage)} 
-      </ScrollView>
-      
-    </View>
+      horizontal={false}
+      pagingEnabled
+      contentContainerStyle={styles.scrollView}
+    />
+      </View>
   );
 };
 
@@ -313,7 +304,7 @@ const styles = StyleSheet.create({
     paddingRight:10,
     paddingTop:2,
     gap:10,
-    marginLeft:160,
+    marginLeft:100,
     height:24,
     width:65
   },

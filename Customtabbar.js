@@ -3,13 +3,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Image, Text, TouchableOpacity ,StyleSheet} from 'react-native';
 import AudioPlayer from './src/components/Audio';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
+import MediaPlayer from './sample';
 
 
 function Home() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       {/* <Text>Home</Text> */}
-      <AudioPlayer></AudioPlayer>
+       <AudioPlayer></AudioPlayer> 
+      {/* <MediaPlayer></MediaPlayer> */}
     </View>
   );
 }
