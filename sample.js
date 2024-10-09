@@ -533,6 +533,7 @@ const MediaPlayer = () => {
     <View style={styles.container}>
      <View style={{position:'absolute',zIndex:100,top:30}}><RenderHeader /></View>
       <FlatList
+        disableIntervalMomentum={ true }
         data={mediaTracks}
         renderItem={renderItem}
         keyExtractor={item => item.id}

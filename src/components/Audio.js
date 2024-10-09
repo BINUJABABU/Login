@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Text, TouchableOpacity, StyleSheet, View, Image, TextInput,StatusBar,FlatList} from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View, Image, TextInput,StatusBar,FlatList, ScrollView} from 'react-native';
 import Video from 'react-native-video';
 import coverImage1 from '../components/image2.png'; 
 import coverImage2 from '../components/image2.png';
@@ -228,9 +228,11 @@ const AudioPlayer = () => {
   };
   
  return (
+  // <ScrollView  contentContainerStyle={styles.scrollView} disableIntervalMomentum={ true }>
     <View style={styles.container}>
       <View style={{position:'absolute',zIndex:100,top:30}}><RenderHeader /></View>
       <FlatList
+      disableIntervalMomentum={ true }
       data={mediaFiles} 
       renderItem={renderMediaPage}
       keyExtractor={item => item.id}
@@ -239,6 +241,7 @@ const AudioPlayer = () => {
       contentContainerStyle={styles.scrollView}
     />
       </View>
+  // </ScrollView>
   );
 };
 
@@ -267,10 +270,7 @@ const styles = StyleSheet.create({
     height: '100%',
     },
   coverContainer: {
-    // width: 400, 
     width:widthPercentageToDP('100%'),
-    //  height: 597,
-    //  screenHeight:'75%',
     height:heightPercentageToDP('87%'),
     overflow: 'hidden',
     alignItems:'center',
